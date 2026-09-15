@@ -10,6 +10,7 @@ import com.baomidou.plugin.idea.mybatisx.generate.util.DomainPlaceHolder;
 import com.baomidou.plugin.idea.mybatisx.util.CollectionUtils;
 import com.baomidou.plugin.idea.mybatisx.util.StringUtils;
 import com.intellij.openapi.actionSystem.ActionToolbarPosition;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
@@ -291,7 +292,7 @@ public class CodeGenerateUI {
                            GridConstraints gridConstraints) {
         templateExtraPanel.add(ToolbarDecorator.createDecorator(tableView)
             .setToolbarPosition(ActionToolbarPosition.LEFT)
-            .addExtraAction(new AnActionButton("Refresh Template", PlatformIcons.SYNCHRONIZE_ICON) {
+            .addExtraAction(new AnAction("Refresh Template", "Refresh template", PlatformIcons.SYNCHRONIZE_ICON) {
                 @Override
                 public void actionPerformed(@NotNull AnActionEvent e) {
                     AbstractButton selectedTemplateName = findSelectedTemplateName();

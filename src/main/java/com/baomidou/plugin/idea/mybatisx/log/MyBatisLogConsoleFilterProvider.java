@@ -1,13 +1,13 @@
 package com.baomidou.plugin.idea.mybatisx.log;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.NotNull;
-
 import com.intellij.execution.filters.ConsoleFilterProvider;
 import com.intellij.execution.filters.Filter;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
+import com.intellij.openapi.util.UserDataHolder;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * MyBatisLogConsoleFilterProvider
@@ -15,18 +15,20 @@ import com.intellij.openapi.util.Key;
  * @author huangxingguang
  */
 public class MyBatisLogConsoleFilterProvider implements ConsoleFilterProvider {
-    private final Key<MyBatisLogConsoleFilter> key = Key.create(MyBatisLogConsoleFilter.class.getName());
+    private final Key<MyBatisLogConsoleFilter> KEY = Key.create(MyBatisLogConsoleFilter.class.getName());
 
     public MyBatisLogConsoleFilterProvider() {
 
     }
 
     @Override
-    public Filter @NotNull [] getDefaultFilters(@NotNull Project project) {
-        MyBatisLogConsoleFilter filter = project.getUserData(key);
+    public Filter[] getDefaultFilters(@NotNull Project project) {
+        UserDataHolder holder = (UserDataHolder) project;
+
+        MyBatisLogConsoleFilter filter = holder.getUserData(KEY);
         if (Objects.isNull(filter)) {
             filter = new MyBatisLogConsoleFilter(project);
-            project.putUserData(key, filter);
+            holder.putUserData(KEY, filter);
         }
         return new Filter[] { filter };
     }

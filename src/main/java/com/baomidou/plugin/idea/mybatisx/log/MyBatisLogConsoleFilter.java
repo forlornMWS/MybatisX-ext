@@ -65,6 +65,7 @@ public class MyBatisLogConsoleFilter implements Filter {
     public @Nullable Result applyFilter(@NotNull String line, int entireLength) {
 
         final MyBatisLogManager manager = MyBatisLogManager.getInstance(project,LogUtil.getToolWindowId(project));
+
         if (Objects.isNull(manager)) {
             return null;
         }

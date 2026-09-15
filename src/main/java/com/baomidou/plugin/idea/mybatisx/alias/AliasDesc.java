@@ -2,6 +2,7 @@ package com.baomidou.plugin.idea.mybatisx.alias;
 
 import com.intellij.psi.PsiClass;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -11,23 +12,12 @@ import java.util.Objects;
  *
  * @author yanglin
  */
+@Setter
 @Getter
 public class AliasDesc {
 
-    /**
-     * -- GETTER --
-     *  Gets clazz.
-     *
-     * @return the clazz
-     */
     private PsiClass clazz;
 
-    /**
-     * -- GETTER --
-     *  Gets alias.
-     *
-     * @return the alias
-     */
     private String alias;
 
     /**
@@ -56,24 +46,6 @@ public class AliasDesc {
      */
     public static AliasDesc create(@NotNull PsiClass psiClass, @NotNull String alias) {
         return new AliasDesc(psiClass, alias);
-    }
-
-    /**
-     * Sets clazz.
-     *
-     * @param clazz the clazz
-     */
-    public void setClazz(PsiClass clazz) {
-        this.clazz = clazz;
-    }
-
-    /**
-     * Sets alias.
-     *
-     * @param alias the alias
-     */
-    public void setAlias(String alias) {
-        this.alias = alias;
     }
 
     @Override

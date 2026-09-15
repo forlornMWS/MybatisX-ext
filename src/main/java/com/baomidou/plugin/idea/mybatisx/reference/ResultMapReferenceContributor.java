@@ -33,8 +33,8 @@ public class ResultMapReferenceContributor extends PsiReferenceContributor {
             new PsiReferenceProvider() {
                 @NotNull
                 @Override
-                public PsiReference @NotNull [] getReferencesByElement(@NotNull PsiElement element,
-                                                                       @NotNull ProcessingContext context) {
+                public PsiReference[] getReferencesByElement(@NotNull PsiElement element,
+                                                             @NotNull ProcessingContext context) {
                     XmlAttributeValue attributeValue = (XmlAttributeValue) element;
                     String sqlId = attributeValue.getValue();
 
@@ -102,7 +102,7 @@ public class ResultMapReferenceContributor extends PsiReferenceContributor {
         }
 
         @Override
-        public ResolveResult @NotNull [] multiResolve(boolean incompleteCode) {
+        public ResolveResult[] multiResolve(boolean incompleteCode) {
             List<ResolveResult> results = new ArrayList<>();
 
             for (XmlAttributeValue selectResultMapValue : selectResultMapValues) {

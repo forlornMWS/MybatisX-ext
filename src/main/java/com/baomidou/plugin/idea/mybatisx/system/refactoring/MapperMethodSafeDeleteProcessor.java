@@ -50,7 +50,7 @@ public class MapperMethodSafeDeleteProcessor extends SafeDeleteProcessorDelegate
     }
 
     @Override
-    public @Nullable NonCodeUsageSearchInfo findUsages(@NotNull PsiElement element, PsiElement @NotNull [] allElementsToDelete, @NotNull List<? super UsageInfo> result) {
+    public @Nullable NonCodeUsageSearchInfo findUsages(@NotNull PsiElement element, PsiElement[] allElementsToDelete, @NotNull List<? super UsageInfo> result) {
         return null;
     }
 

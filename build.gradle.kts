@@ -1,3 +1,5 @@
+import org.gradle.internal.classpath.Instrumented.systemProperty
+
 buildscript {
     repositories {
         mavenLocal()
@@ -17,7 +19,7 @@ buildscript {
 plugins {
     java
     kotlin("jvm") version "1.9.25"
-    id("org.jetbrains.intellij.platform") version "2.5.0"
+    id("org.jetbrains.intellij.platform") version "2.9.0"
 }
 
 java {
@@ -34,7 +36,7 @@ intellijPlatform {
 }
 
 group = "com.baomidou.plugin.idea.ext.mybatisx"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenLocal()
@@ -47,8 +49,12 @@ repositories {
 
 dependencies {
     intellijPlatform{
-        create("IU", "2025.1")
-        bundledPlugins(listOf("com.intellij.java", "org.jetbrains.kotlin", "com.intellij.database", "com.intellij.spring.boot"))
+//        create("IU", "2025.2")
+        local("D:\\Program\\JetBrains\\IntelliJ IDEA Ultimate")
+        bundledPlugins(listOf("com.intellij.java", "org.jetbrains.kotlin", "com.intellij.database", "com.intellij.spring", "com.intellij.spring.boot",  "com.intellij.modules.ultimate"))
+        testBundledModule("com.intellij.modules.ultimate")
+        // Add the ultimate module capability
+        bundledModule("com.intellij.modules.ultimate")
     }
     implementation("com.softwareloop:mybatis-generator-lombok-plugin:1.0")
     implementation("uk.com.robust-it:cloning:1.9.2")
@@ -59,6 +65,13 @@ dependencies {
     testImplementation("commons-io:commons-io:2.18.0")
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
+}
+
+intellijPlatformTesting {
+    runIde {
+        systemProperty("idea.is.internal", "true")
+        systemProperty("idea.debug.mode", "true")
+    }
 }
 
 tasks {

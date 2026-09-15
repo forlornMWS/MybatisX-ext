@@ -4,6 +4,7 @@ import com.baomidou.plugin.idea.mybatisx.generate.dto.ConfigSetting;
 import com.baomidou.plugin.idea.mybatisx.generate.dto.TemplateContext;
 import com.baomidou.plugin.idea.mybatisx.generate.dto.TemplateSettingDTO;
 import com.intellij.debugger.JavaDebuggerBundle;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.ui.AnActionButton;
 import com.intellij.ui.AnActionButtonRunnable;
@@ -99,7 +100,14 @@ public class MybatisXTemplateSettings {
                     public void run(AnActionButton anActionButton) {
 
                     }
-                }).addExtraAction(new CopyAction())
+                }).addExtraAction(new AnAction(JavaDebuggerBundle.message("button.copy"),
+                    JavaDebuggerBundle.message("user.renderers.configurable.button.description.copy"),
+                    PlatformIcons.COPY_ICON) {
+                    @Override
+                    public void actionPerformed(@NotNull AnActionEvent e) {
+
+                    }
+                })
                 .setPreferredSize(new Dimension(220, -1))
                 .createPanel(),
             gridConstraints);

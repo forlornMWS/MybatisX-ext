@@ -58,7 +58,7 @@ public class ContextPsiFieldReference extends PsiReferenceBase<XmlAttributeValue
 
     @NotNull
     @Override
-    public Object @NotNull [] getVariants() {
+    public Object[] getVariants() {
         Optional<PsiClass> clazz = getTargetClazz();
         if (clazz.isEmpty()) {
             return PsiReference.EMPTY_ARRAY;
